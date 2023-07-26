@@ -17,7 +17,22 @@ class CastlesController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
       end
     end
+  end
 
+  def edit
+    @castle = Castle.find(params[:id])
+    @user = current_user
+  end
+
+  def update
+    @castle = Castle.find(params[:id])
+    @user = current_user
+    @castle.user = @user
+    if @castle.update(castle_params)
+      redirect_to @castle, notice: 'Castelo atualizado corretamente'
+    else
+      render :edit
+    end
   end
 
   private
