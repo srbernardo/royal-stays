@@ -5,6 +5,4 @@ Rails.application.routes.draw do
   resources :castles
   # Defines the root path route ("/")
   # root "articles#index"
-
-  resources :castles
 end
