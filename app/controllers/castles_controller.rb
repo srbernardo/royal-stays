@@ -1,4 +1,5 @@
 class CastlesController < ApplicationController
+
   def new
     @castle = Castle.new
     @user = current_user
