@@ -1,0 +1,11 @@
+
+<h1>Castles List</h1>
+
+<ul>
+  <% @castles.each do |castle| %>
+    <li>
+      <h2><%= link_to castle.name, castle_path(castle) %></h2>
+      <p><%= castle.description %></p>
+    </li>
+  <% end %>
+</ul>
