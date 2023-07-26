@@ -1,0 +1,15 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div>
+    <%= link_to "/", class: "navbar-brand" do %>
+      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to "castles" %>
+    <% if user_signed_in? %>
+      <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete} %>
+    <% else %>
+      <%= link_to "Login", new_user_session_path %>
+    <% end %>
+  </div>
+</div>
