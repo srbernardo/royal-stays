@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
-  root to: "castles#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :castles
-  # Defines the root path route ("/")
-  # root "articles#index"
-  resources :castles
+  root "castles#index"
+  devise_for :users
+  resources :castles, except: :index
 end
