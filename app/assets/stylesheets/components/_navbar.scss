@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: $blue;
   padding: 10px;
 }
 
@@ -9,10 +9,12 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 50px;
+  margin-left: 10px;
 }
 
 .navbar-lewagon a {
+  color: white;
   text-decoration: none;
   padding-right: 16px;
   cursor: pointer;
