@@ -6,6 +6,7 @@ class CastlesController < ApplicationController
 
   def show
     @castle = Castle.find(params[:id])
+  end
 
   def new
     @castle = Castle.new
