@@ -1,0 +1,21 @@
+.card {
+  .card-title a {
+    color: $gray;
+    text-decoration: none;
+
+    &:hover {
+      font-weight: bold;
+      color: $dark-gray;
+    }
+  }
+}
+
+  .new-castle a {
+    color: $gray;
+    text-decoration: none;
+
+    &:hover {
+      font-weight: bold;
+      color: $dark-gray;
+    }
+  }

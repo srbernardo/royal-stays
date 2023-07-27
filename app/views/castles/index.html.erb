@@ -1,11 +1,35 @@
 
-<h1>Castles List</h1>
-
-<ul>
-  <% @castles.each do |castle| %>
-    <li>
-      <h2><%= link_to castle.name, castle_path(castle) %></h2>
-      <p><%= castle.description %></p>
-    </li>
-  <% end %>
-</ul>
+<div class="container my-5">
+<div class="d-flex justify-content-between">
+  <h1 class= 'fs-3'>Ours Castles (<%= @castles.count %>)</h1>
+  <h5 class="new-castle"><%= link_to 'new castle', new_castle_path(@castle) %></h5>
+</div>
+  <hr>
+  <div class="row justify-content-center" style="gap: 1.2rem" >
+    <% @castles.each do |castle| %>
+      <div class="col-lg-3 col-md-4">
+        <div class="card" >
+          <img src="https://images.unsplash.com/photo-1580677616212-2fa929e9c2cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGNhc3RsZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="a castle">
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to castle.name, castle_path(castle) %></h5>
+            <p class="card-text"><%= castle.address %></p>
+            <div class='d-flex justify-content-between'>
+              <p><i class="fa-solid fa-dollar-sign"></i> <%= castle.daily_rate %></p>
+            </div>
+            <div>
+              <%= link_to castle_path(castle), class:'text-primary', style:"text-decoration: none" do %>
+                <i class="fa-solid fa-circle-info"></i>
+              <% end %>
+              <%= link_to edit_castle_path(castle), class:'text-warning', style:"text-decoration: none" do %>
+                <i class="fa-solid fa-pen"></i>
+              <% end %>
+              <%= link_to castle_path(castle), data:{ turbo_method: :delete, turbo_confirm: "Are you sure?" }, class:'text-danger' do %>
+                <i class="fa-solid fa-trash-can"></i>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
