@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root "castles#index"
   devise_for :users
   resources :castles, except: :index
+  resources :rentals, only: [:index, :show ]
 end
