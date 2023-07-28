@@ -1,9 +1,9 @@
 <div class="container my-5">
   <div class="row justify-content-center">
     <div class="col-6">
-       <h1 class='mb-4'><%= @castle.name %></h1>
-      <img src="https://images.unsplash.com/photo-1580677616212-2fa929e9c2cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGNhc3RsZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60" class="card-img-top mb-4" alt="castle">
-      <p class='fs-4'><i class="fa-regular fa-map fs-3 me-2"></i> <%= @castle.address %></p>
+      <h1 class='mb-4'><%= @castle.name %></h1>
+      <%= cl_image_tag @castle.photo.key, height: 550, width: 450, crop: :fill %>
+      <p class='fs-4 mt-4'><i class="fa-regular fa-map fs-3 me-2"></i> <%= @castle.address %></p>
       <p class='fs-5'><%= @castle.description %></p>
       <div class='d-flex justify-content-between fs-4'>
       <span><i class="fa-solid fa-dollar-sign"></i> <%= @castle.daily_rate %></span>
