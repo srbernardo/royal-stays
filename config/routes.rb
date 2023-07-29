@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   resources :castles, except: :index do
     resources :rentals, only: [:new, :create]
   end
-  resources :rentals, only: [:index, :show]
+  resources :rentals, only: [:index, :show, :destroy]
 end
