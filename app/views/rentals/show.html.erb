@@ -1,7 +1,32 @@
 
-<h1>Total rental</h1>
-<h3>Data de entrada <%= @rental.start_date %></h1>
-<h3>Data de saida <%= @rental.end_date %></h1>
-<h3><%= @rental.total_rental %></h1>
-
-<%= link_to "Back to rentals List", rentals_path %>
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <div class="card-product">
+        <%= cl_image_tag @rental.castle.photo.key, height: 200, width: 300, crop: :fill %>
+        <div class="card-product-infos ms-4">
+          <h2><%= @rental.castle.name %></h2>
+          <p>Start date: <%= @rental.start_date.strftime("%d/%m/%Y") %></p>
+          <p>End date: <%= @rental.end_date.strftime("%d/%m/%Y") %></p>
+          <div class="d-flex justify-content-between">
+            <div class='d-flex justify-content-between me-2'>
+              <p><i class="fa-regular fa-calendar-check"></i> <%= @days.to_i %> days</p>
+            </div>
+            <div class='d-flex justify-content-between'>
+              <p>Total: <%= number_to_currency(@rental.total_rental) %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%= link_to rentals_path, style:"text-decoration: none" do %>
+        <i class="fa-solid fa-reply-all"></i>
+      <% end %>
+      <%= link_to rental_path(@rental), class:'text-warning', style:"text-decoration: none" do %>
+        <i class="fa-solid fa-pen"></i>
+      <% end %>
+      <%= link_to rental_path(@rental), data:{ turbo_method: :delete, turbo_confirm: "Are you sure?" }, class:'text-danger' do %>
+        <i class="fa-solid fa-trash-can"></i>
+      <% end %>
+    </div>
+  </div>
+</div>
