@@ -10,7 +10,7 @@ class RentalsController < ApplicationController
     @user = current_user
     @rental.user = @user
     if @rental.save
-      redirect_to @rental, notice: "Rental was successfully created."
+      redirect_to rentals_path, notice: "Rental was successfully created."
     else
       render :new
     end
