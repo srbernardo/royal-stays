@@ -23,8 +23,8 @@ class RentalsController < ApplicationController
 
   def show
     @rental = Rental.find(params[:id])
-    days = @rental.end_date - @rental.start_date
-    @rental.total_rental = @rental.castle.daily_rate * days.to_f
+    @days = @rental.end_date - @rental.start_date
+    @rental.total_rental = @rental.castle.daily_rate * @days.to_f
   end
 
   private
