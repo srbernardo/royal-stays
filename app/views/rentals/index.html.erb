@@ -1,14 +1,16 @@
-
-<h1>Rental List</h1>
-
-<ul>
-  <% @rentals.each do |rental| %>
-    <li>
-      <p><%= rental.castle.name %></p>
-      <p><%= rental.start_date %></p>
-      <p><%= rental.end_date %></p>
-      <%= link_to "Details", rental_path(rental) %>
-    </li>
-      <h2><%= link_to "Voltar", root_path %></h2>
-  <% end %>
-</ul>
+<div class="container my-5">
+  <div class="d-flex justify-content-between">
+    <h1 class= 'fs-3'>Rental List (<%= @rentals.count %>)</h1>
+    <h5 class="new-castle"><%= link_to 'new rent', new_castle_path(@rental) %></h5>
+  </div>
+  <hr>
+  <div class="row justify-content-center" style="gap: 1.2rem" >
+    <% @rentals.each do |rental| %>
+      <%= link_to rental_path(rental), class:'text-primary', style:"text-decoration: none" do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path rental.castle.photo.key, height: 300, crop: :fill %>')">
+          <%= rental.castle.name %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
