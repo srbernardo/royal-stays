@@ -45,6 +45,12 @@ class CastlesController < ApplicationController
     end
   end
 
+  def destroy
+    @castle = Castle.find(params[:id])
+    @castle.destroy
+    redirect_to root_path, notice: 'Castle was successfully deleted.', status: :see_other
+  end
+
   private
 
   def castle_params
