@@ -1,0 +1,25 @@
+<%= simple_form_for([@castle, @rental]) do |form| %>
+  <% if @rental.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@rental.errors.count, "error") %> prohibited this rental from being saved:</h2>
+
+      <ul>
+        <% @rental.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-inputs">
+    <%= form.label :start_date %>
+    <%= form.text_field :start_date, class: 'form-control' %>
+
+    <%= form.label :end_date %>
+    <%= form.text_field :end_date, class: 'form-control' %>
+  </div>
+
+  <div class="form-actions">
+    <%= form.button :submit, class: 'btn btn-primary' %>
+  </div>
+<% end %>
