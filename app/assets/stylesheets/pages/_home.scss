@@ -1,1 +1,59 @@
-// Specific CSS for your home-page
+.hero {
+  background-image: url('hero.jpeg');
+  height: calc(100vh - 60px);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.layer {
+  height: calc(100vh - 60px);
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.container-search-bar {
+  height: 150px;
+  width: 50%;
+  transform: translate(-50%, 50%);
+  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+
+  .search-place {
+    height: 50px;
+    width: 200px;
+    background-color: $light-gray;
+    border-radius: 50px;
+    padding: 16px;
+
+    &::placeholder {
+      font-size: 16px;
+      color: $gray;
+    }
+  }
+  .search-checkin, .search-checkout {
+    height: 50px;
+    width: 140px;
+    background-color: $light-gray;
+    border-radius: 50px;
+    padding: 10px;
+    color: $gray;
+  }
+
+  a {
+    font-size: 36px;
+    margin-left: 10px;
+    color: #fff;
+  }
+
+  form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
