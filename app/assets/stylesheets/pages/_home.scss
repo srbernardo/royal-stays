@@ -1,28 +1,35 @@
 .hero {
   background-image: url('hero.jpeg');
-  height: calc(100vh - 60px);
+  height: calc(100vh - 70px);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
 }
 .layer {
-  height: calc(100vh - 60px);
+  height: calc(100vh - 70px);
   width: 100%;
   position: absolute;
   left: 0;
-  bottom: -10px;
+  top: 70px;
   background-color: rgba(0,0,0,0.5);
 }
 
 .container-search-bar {
   height: 150px;
   width: 50%;
-  transform: translate(-50%, 50%);
+  transform: translate(-50%, 80%);
   margin: 0 auto;
   position: absolute;
   left: 50%;
   bottom: 50%;
+
+  h1 {
+    color: $light-gray;
+    text-align: center;
+    // margin-bottom: 18px;
+    transform: translate(-20px, -10px);
+  }
 
   .search-place {
     height: 50px;
@@ -36,6 +43,13 @@
       color: $gray;
     }
   }
+
+  form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .search-checkin, .search-checkout {
     height: 50px;
     width: 140px;
@@ -45,15 +59,17 @@
     color: $gray;
   }
 
-  a {
+  .search-btn {
     font-size: 36px;
     margin-left: 10px;
     color: #fff;
+    background: transparent;
+    border: none;
   }
+}
 
+@media (max-width: 576px){
   form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
   }
 }
