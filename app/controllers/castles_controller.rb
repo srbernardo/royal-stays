@@ -21,7 +21,7 @@ class CastlesController < ApplicationController
 
     respond_to do |format|
       if @castle.save
-        format.html { redirect_to root_path, notice: "castle was successfully created." }
+        format.html { redirect_to root_path, notice: "Castle was successfully created." }
         @castle.save
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class CastlesController < ApplicationController
     @user = current_user
     @castle.user = @user
     if @castle.update(castle_params)
-      redirect_to @castle, notice: 'Castelo atualizado corretamente'
+      redirect_to @castle, notice: "Castle was successfully updated."
     else
       render :edit
     end
