@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  root "castles#index"
+  root "pages#home"
   devise_for :users
-  resources :castles, except: :index do
-    resources :rentals, only: [:new, :create]
+  resources :castles do
+    resources :rentals, only: %i[new create]
   end
-  resources :rentals, only: [:index, :show, :destroy]
+  resources :rentals, only: %i[index show destroy]
+  get "search", to: 'pages#search'
 end
