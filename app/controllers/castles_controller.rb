@@ -1,5 +1,6 @@
 class CastlesController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
+  before_action :require_authorization_owner, only: [:edit, :update, :destroy]
   before_action :find_castle, only: [:show, :edit, :update, :destroy, :require_authorization_owner]
 
   def index
@@ -56,5 +57,12 @@ class CastlesController < ApplicationController
 
   def find_castle
     @castle = Castle.find(params[:id])
+  end
+
+  def require_authorization_owner
+    castle = Castle.find(params[:id])
+    if current_user.id == castle.user_id
+      redirect_to castles_path, alert: "Access denied. You need to be the owner of the castle."
+    end
   end
 end
