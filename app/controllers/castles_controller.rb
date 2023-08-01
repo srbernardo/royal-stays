@@ -21,7 +21,7 @@ class CastlesController < ApplicationController
 
     respond_to do |format|
       if @castle.save
-        format.html { redirect_to root_path, notice: "Castle was successfully created." }
+        format.html { redirect_to castles_path, notice: "Castle was successfully created." }
         @castle.save
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -48,7 +48,7 @@ class CastlesController < ApplicationController
   def destroy
     @castle = Castle.find(params[:id])
     @castle.destroy
-    redirect_to root_path, notice: 'Castle was successfully deleted.', status: :see_other
+    redirect_to castles_path, notice: 'Castle was successfully deleted.', status: :see_other
   end
 
   private

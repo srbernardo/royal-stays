@@ -8,7 +8,7 @@
       <div class='d-flex justify-content-between fs-4'>
         <span><%= number_to_currency(@castle.daily_rate) %></span>
       </div>
-      <%= link_to root_path, style: "text-decoration: none" do %>
+      <%= link_to castles_path, style: "text-decoration: none" do %>
         <i class="fa-solid fa-reply-all"></i>
       <% end %>
       <%= link_to edit_castle_path(@castle), class: 'text-warning', style: "text-decoration: none" do %>
