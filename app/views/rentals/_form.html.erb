@@ -12,11 +12,8 @@
   <% end %>
 
   <div class="form-inputs">
-    <%= form.label :start_date %>
-    <%= form.text_field :start_date, class: 'form-control' %>
-
-    <%= form.label :end_date %>
-    <%= form.text_field :end_date, class: 'form-control' %>
+    <%= form.input :start_date, as: :date, html5: true %>
+    <%= form.input :end_date, as: :date, html5: true %>
   </div>
 
   <div class="form-actions my-3">
