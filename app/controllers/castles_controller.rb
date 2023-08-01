@@ -1,12 +1,12 @@
 class CastlesController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
+  before_action :find_castle, only: [:show, :edit, :update, :destroy, :require_authorization_owner]
 
   def index
     @castles = Castle.all
   end
 
   def show
-    @castle = Castle.find(params[:id])
   end
 
   def new
@@ -30,12 +30,10 @@ class CastlesController < ApplicationController
   end
 
   def edit
-    @castle = Castle.find(params[:id])
     @user = current_user
   end
 
   def update
-    @castle = Castle.find(params[:id])
     @user = current_user
     @castle.user = @user
     if @castle.update(castle_params)
@@ -46,7 +44,6 @@ class CastlesController < ApplicationController
   end
 
   def destroy
-    @castle = Castle.find(params[:id])
     @castle.destroy
     redirect_to castles_path, notice: 'Castle was successfully deleted.', status: :see_other
   end
@@ -55,5 +52,9 @@ class CastlesController < ApplicationController
 
   def castle_params
     params.require(:castle).permit(:name, :description, :address, :daily_rate, :photo)
+  end
+
+  def find_castle
+    @castle = Castle.find(params[:id])
   end
 end
