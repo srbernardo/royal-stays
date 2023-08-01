@@ -1,2 +1,11 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="hero"></div>
+<div class="layer"></div>
+<div class="container-search-bar">
+  <h1>Rent a Kingdom</h1>
+  <form action="/search" method="get">
+    <input type="input" name="place" class="search-place" placeholder="place">
+    <input type="date" name="checkin" class="search-checkin">
+    <input type="date" name="checkout" class="search-checkout">
+    <button type="submit" class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+  </form>
+</div>
