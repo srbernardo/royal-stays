@@ -22,7 +22,7 @@ class CastlesController < ApplicationController
 
     respond_to do |format|
       if @castle.save
-        format.html { redirect_to castles_path, notice: "Castle was successfully created." }
+        format.html { redirect_to castle_path(@castle), notice: "Castle was successfully created." }
         @castle.save
       else
         format.html { render :new, status: :unprocessable_entity }
