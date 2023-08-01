@@ -11,7 +11,7 @@
       <%= link_to castles_path, style: "text-decoration: none" do %>
         <i class="fa-solid fa-reply-all"></i>
       <% end %>
-      <% unless current_user.id == @castle.user_id %>
+      <% if current_user.id == @castle.user_id %>
         <%= link_to edit_castle_path(@castle), class: 'text-warning', style: "text-decoration: none" do %>
           <i class="fa-solid fa-pen"></i>
         <% end %>

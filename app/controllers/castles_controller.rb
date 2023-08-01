@@ -61,7 +61,7 @@ class CastlesController < ApplicationController
 
   def require_authorization_owner
     castle = Castle.find(params[:id])
-    if current_user.id == castle.user_id
+    unless current_user.id == castle.user_id
       redirect_to castles_path, alert: "Access denied. You need to be the owner of the castle."
     end
   end
