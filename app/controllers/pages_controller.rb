@@ -5,7 +5,11 @@ class PagesController < ApplicationController
   end
 
   def search
-    place = "%#{params[:place]}%"
-    @castles = Castle.where('name ILIKE ?', place) | Castle.where('address ILIKE ?', place)
+    @castles = Castle.rental_search(params[:place])
+    date_overlaps(params[:checkin], params[:checkout])
   end
+
+  # def date_overlaps(start, finish)
+  #   where("#{start}, #{finish} OVERLAPS (?,?)", start, finish)
+  # end
 end
