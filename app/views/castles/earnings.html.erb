@@ -1,10 +1,11 @@
 <div class="container my-5">
 <div class="d-flex justify-content-between">
-  <h1 class= 'fs-3'>Our Castles (<%= @castles.count %>)</h1>
+  <h1 class= 'fs-3'>My castles and reservations</h1>
   <h5 class="new-castle"><%= link_to 'new castle', new_castle_path(@castle) %></h5>
 </div>
   <hr>
-  <div class="row justify-content-center" style="gap: 1.2rem" >
+  <div class="row justify-content-start" style="gap: 1.2rem" >
+    <h5>Available for rent:</h5>
     <% @castles.each do |castle| %>
       <div class="col-lg-3 col-md-4">
         <div class="card" >
@@ -32,5 +33,31 @@
         </div>
       </div>
     <% end %>
+    <h5>My earnings:</h5>
+     <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Castle</th>
+        <th>Reservation Id</th>
+        <th>Days</th>
+        <th>Total Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @earnings_table.each do |entry| %>
+        <tr>
+          <td><%= entry[:castle].name %></td>
+          <td><%= entry[:rental_id] %></td>
+          <td><%= entry[:days] %></td>
+          <td><%= entry[:total_rental] %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <td colspan="3" class="text-end"><strong>Total Earnings:</strong></td>
+        <td><%= number_to_currency(@total_earnings) %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
   </div>
 </div>

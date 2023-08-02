@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   end
   resources :rentals, only: %i[index destroy]
   get "search", to: 'pages#search'
+  get "earnings", to: 'castles#earnings'
 end

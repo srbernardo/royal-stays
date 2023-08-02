@@ -10,6 +10,20 @@ class CastlesController < ApplicationController
   def show
   end
 
+  def earnings
+    @castles = current_user.castles
+    @earnings_table = []
+
+    @castles.each do |castle|
+      castle.rentals.each do |rental|
+        days = (rental.end_date - rental.start_date).to_i + 1
+        @earnings_table << { castle: castle, rental_id: rental.id, days: days, total_rental: rental.total_rental }
+      end
+    end
+
+    @total_earnings = @earnings_table.sum { |entry| entry[:total_rental] }
+  end
+
   def new
     @castle = Castle.new
     @user = current_user

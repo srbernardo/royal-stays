@@ -5,9 +5,12 @@
     <% end %>
   </div>
   <div class="d-flex">
-    <%= link_to "Castles", castles_path %>
+    <%= link_to "All Castles", castles_path %>
     <% if user_signed_in? %>
       <%= link_to "My Reservations", rentals_path %>
+      <% if current_user.castles.any? %>
+      <%= link_to "My Earnings", earnings_path %>
+      <% end %>
       <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete} %>
     <% else %>
       <%= link_to "Login", new_user_session_path %>
