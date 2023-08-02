@@ -20,7 +20,7 @@
               <%= link_to castle_path(castle), class:'text-primary', style:"text-decoration: none" do %>
                 <i class="fa-solid fa-circle-info"></i>
               <% end %>
-              <% if current_user.id == castle.user_id %>
+              <% if user_signed_in? && (current_user.id == castle.user_id) %>
                 <%= link_to edit_castle_path(castle), class:'text-warning', style:"text-decoration: none" do %>
                   <i class="fa-solid fa-pen"></i>
                 <% end %>
