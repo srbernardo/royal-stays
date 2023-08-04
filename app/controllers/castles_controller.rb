@@ -13,14 +13,21 @@ class CastlesController < ApplicationController
   def earnings
     @castles = current_user.castles
     @earnings_table = []
-
     @castles.each do |castle|
       castle.rentals.each do |rental|
         days = (rental.end_date - rental.start_date).to_i + 1
-        @earnings_table << { castle: castle, rental_id: rental.id, days: days, total_rental: rental.total_rental }
+        rental.total_rental = rental.castle.daily_rate * days.to_f
+        @earnings_table << {
+          castle: castle,
+          rental: rental,
+          total_days: days,
+          total_rental: rental.total_rental,
+          daily_rate: castle.daily_rate,
+          start_date: rental.start_date,
+          end_date: rental.end_date
+        }
       end
     end
-
     @total_earnings = @earnings_table.sum { |entry| entry[:total_rental] }
   end
 

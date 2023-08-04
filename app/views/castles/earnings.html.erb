@@ -7,14 +7,14 @@
   <div class="row justify-content-start" style="gap: 1.2rem" >
     <h5>Available for rent:</h5>
     <% @castles.each do |castle| %>
-      <div class="col-lg-3 col-md-4">
+      <div class="col-lg-3 col-md-4 mb-3">
         <div class="card" >
           <%= cl_image_tag castle.photo.key, height: 200, width: 300, crop: :fill %>
           <div class="card-body">
             <h5 class="card-title"><%= link_to castle.name, castle_path(castle) %></h5>
             <p class="card-text"><%= castle.address %></p>
             <div class='d-flex justify-content-between'>
-              <p><%= number_to_currency(castle.daily_rate) %></p>
+              <p><%= number_to_currency(castle.daily_rate) %>/night</p>
             </div>
             <div>
               <%= link_to castle_path(castle), class:'text-primary', style:"text-decoration: none" do %>
@@ -33,31 +33,37 @@
         </div>
       </div>
     <% end %>
-    <h5>My earnings:</h5>
-     <table class="table table-bordered">
+    <hr>
+<h5>My earnings:</h5>
+<div class="table-responsive">
+  <table class="table table-bordered table-sm">
     <thead>
       <tr>
-        <th>Castle</th>
-        <th>Reservation Id</th>
-        <th>Days</th>
-        <th>Total Amount</th>
+        <th style="width: 25%">Castle</th>
+        <th style="width: 12%">Client Email</th>
+        <th style="width: 8%">Start Date</th>
+        <th style="width: 8%">End Date</th>
+        <th style="width: 7%">Total Days</th>
+        <th style="width: 10%">Daily Rate</th>
+        <th style="width: 10%">Total Amount</th>
       </tr>
     </thead>
     <tbody>
       <% @earnings_table.each do |entry| %>
         <tr>
           <td><%= entry[:castle].name %></td>
-          <td><%= entry[:rental_id] %></td>
-          <td><%= entry[:days] %></td>
-          <td><%= entry[:total_rental] %></td>
+          <td><%= entry[:rental].user.email %></td>
+          <td><%= entry[:start_date] %></td>
+          <td><%= entry[:end_date] %></td>
+          <td><%= entry[:total_days] %></td>
+          <td><%= number_to_currency(entry[:daily_rate]) %></td>
+          <td><%= number_to_currency(entry[:total_rental]) %></td>
         </tr>
       <% end %>
       <tr>
-        <td colspan="3" class="text-end"><strong>Total Earnings:</strong></td>
-        <td><%= number_to_currency(@total_earnings) %></td>
+        <td colspan="6" class="text-end"><strong>Total Earnings:</strong></td>
+        <td colspan="1"><%= number_to_currency(@total_earnings) %></td>
       </tr>
     </tbody>
   </table>
-</div>
-  </div>
 </div>
