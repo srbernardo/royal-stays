@@ -6,13 +6,21 @@
   </div>
   <div class="d-flex">
     <div class="btn-group">
-      <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        <i class="fa-solid fa-bars"></i>
+      <button type="button" class=" d-flex btn btn-secondary" data-bs-toggle="dropdown" aria-expanded="false">
+        <div class="d-flex align-items-center">
+          <i class="fa-solid fa-bars me-2"></i>
+          <% if user_signed_in? && !current_user.photo.key.nil? %>
+            <%= cl_image_tag current_user.photo.key, height: 35, width: 35, crop: :fill , class: "rounded-5"%>
+          <% else %>
+            <i class="fa-solid fa-circle-user fs-3"></i>
+          <% end %>
+        </div>
       </button>
       <ul class="dropdown-menu dropdown-menu-end bg-secondary mt-3">
         <li><%= link_to "Castles", castles_path , class: "dropdown-item"%></li>
         <% if user_signed_in? %>
           <li><%= link_to "My Reservations", rentals_path, class: "dropdown-item"%></li>
+          <li><%= link_to "Edit account", edit_user_registration_path, class: "dropdown-item"%></li>
           <li><hr class="dropdown-divider"></li>
           <li><%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item"%></li>
         <% else %>
