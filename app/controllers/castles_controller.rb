@@ -7,6 +7,12 @@ class CastlesController < ApplicationController
 
   def show
     @castle = Castle.find(params[:id])
+
+    @markers = [{
+      lat: @castle.latitude,
+      lng: @castle.longitude
+    }]
+
   end
 
   def new
@@ -54,6 +60,6 @@ class CastlesController < ApplicationController
   private
 
   def castle_params
-    params.require(:castle).permit(:name, :description, :address, :daily_rate, :photo)
+    params.require(:castle).permit(:name, :description, :address, :daily_rate, :photo, :latitude, :longitude)
   end
 end

@@ -1,3 +1,7 @@
+
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
+
 <div class="container my-5">
   <div class="row justify-content-center">
     <div class="col-6">
@@ -5,6 +9,10 @@
       <%= cl_image_tag @castle.photo.key, height: 550, width: 450, crop: :fill %>
       <p class='fs-4 mt-4'><i class="fa-regular fa-map fs-3 me-2"></i> <%= @castle.address %></p>
       <p class='fs-5'><%= @castle.description %></p>
+      <div style="width: 100%; height: 600px;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
       <div class='d-flex justify-content-between fs-4'>
         <span><%= number_to_currency(@castle.daily_rate) %></span>
       </div>
@@ -24,3 +32,4 @@
     </div>
   </div>
 </div>
+<%= @markers %>
