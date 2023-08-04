@@ -8,16 +8,11 @@ class CastlesController < ApplicationController
   end
 
   def show
-<<<<<<< HEAD
     @castle = Castle.find(params[:id])
-
     @markers = [{
       lat: @castle.latitude,
       lng: @castle.longitude
     }]
-
-=======
->>>>>>> master
   end
 
   def new
