@@ -2,7 +2,7 @@
   <h1>Edit Castle</h1>
 
   <%= render 'form', castle: @castle %>
-  <%= link_to root_path, style:"text-decoration: none" do %>
+  <%= link_to castles_path, style:"text-decoration: none" do %>
     <i class="fa-solid fa-reply-all"></i>
   <% end %>
   <%= link_to castle_path(@castle), class:'text-primary', style:"text-decoration: none" do %>

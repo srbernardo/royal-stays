@@ -16,14 +16,16 @@
       <div class='d-flex justify-content-between fs-4'>
         <span><%= number_to_currency(@castle.daily_rate) %></span>
       </div>
-      <%= link_to root_path, style: "text-decoration: none" do %>
+      <%= link_to castles_path, style: "text-decoration: none" do %>
         <i class="fa-solid fa-reply-all"></i>
       <% end %>
-      <%= link_to edit_castle_path(@castle), class: 'text-warning', style: "text-decoration: none" do %>
-        <i class="fa-solid fa-pen"></i>
-      <% end %>
-      <%= link_to castle_path(@castle), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'text-danger' do %>
-        <i class="fa-solid fa-trash-can"></i>
+      <% if current_user.id == @castle.user_id %>
+        <%= link_to edit_castle_path(@castle), class: 'text-warning', style: "text-decoration: none" do %>
+          <i class="fa-solid fa-pen"></i>
+        <% end %>
+        <%= link_to castle_path(@castle), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'text-danger' do %>
+          <i class="fa-solid fa-trash-can"></i>
+        <% end %>
       <% end %>
       <br>
       <%= link_to new_castle_rental_path(@castle), class: 'btn btn-primary mt-3' do %>
