@@ -6,7 +6,7 @@
       <p class='fs-4 mt-4'><i class="fa-regular fa-map fs-3 me-2"></i> <%= @castle.address %></p>
       <p class='fs-5'><%= @castle.description %></p>
       <div class='d-flex justify-content-between fs-4'>
-        <span><%= number_to_currency(@castle.daily_rate) %></span>
+        <p><span><%= number_to_currency(@castle.daily_rate) %></span>/night</p>
       </div>
       <%= link_to castles_path, style: "text-decoration: none" do %>
         <i class="fa-solid fa-reply-all"></i>
