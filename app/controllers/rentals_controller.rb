@@ -1,6 +1,6 @@
 class RentalsController < ApplicationController
-  before_action :set_castle, only: %i[new create]
-  before_action :set_user, only: %i[index create]
+  before_action :set_castle, only: [:new, :create]
+  before_action :set_user, only: [:index, :create]
 
   def new
     @rental = @castle.rentals.build
