@@ -13,6 +13,16 @@
   object-fit: cover;
 }
 
+.card-product a {
+  color: $gray;
+    text-decoration: none;
+
+    &:hover {
+      font-weight: bold;
+      color: $dark-gray;
+    }
+}
+
 .card-product h2 {
   font-size: 20px;
   font-weight: bold;
