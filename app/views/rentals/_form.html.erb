@@ -1,10 +1,10 @@
-<%= simple_form_for([@castle, @rental]) do |form| %>
-  <% if @rental.errors.any? %>
+<%= simple_form_for([castle, rental]) do |form| %>
+  <% if rental.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@rental.errors.count, "error") %> prohibited this rental from being saved:</h2>
+      <h2><%= pluralize(rental.errors.count, "error") %> prohibited this rental from being saved:</h2>
 
       <ul>
-        <% @rental.errors.full_messages.each do |message| %>
+        <% rental.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
