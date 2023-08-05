@@ -12,7 +12,7 @@ class RentalsController < ApplicationController
     if @rental.save
       redirect_to rentals_path, notice: "Rental was successfully created."
     else
-      render :new, status: :unprocessable_entity
+      render "castles/show", status: :unprocessable_entity
     end
   end
 
