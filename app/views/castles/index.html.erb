@@ -1,7 +1,6 @@
-
 <div class="container my-5">
 <div class="d-flex justify-content-between">
-  <h1 class= 'fs-3'>Ours Castles (<%= @castles.count %>)</h1>
+  <h1 class= 'fs-3'>Our Castles (<%= @castles.count %>)</h1>
   <h5 class="new-castle"><%= link_to 'new castle', new_castle_path(@castle) %></h5>
 </div>
   <hr>
@@ -14,7 +13,7 @@
             <h5 class="card-title"><%= link_to castle.name, castle_path(castle) %></h5>
             <p class="card-text"><%= castle.address %></p>
             <div class='d-flex justify-content-between'>
-              <p><%= number_to_currency(castle.daily_rate) %></p>
+              <p><%= number_to_currency(castle.daily_rate) %>/night</p>
             </div>
             <div>
               <%= link_to castle_path(castle), class:'text-primary', style:"text-decoration: none" do %>

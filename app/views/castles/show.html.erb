@@ -11,7 +11,7 @@
         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
       <div class='d-flex justify-content-between fs-4'>
-        <span><%= number_to_currency(@castle.daily_rate) %></span>
+        <p><span><%= number_to_currency(@castle.daily_rate) %></span>/night</p>
       </div>
       <%= link_to castles_path, style: "text-decoration: none" do %>
         <i class="fa-solid fa-reply-all"></i>
