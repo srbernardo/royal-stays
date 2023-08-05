@@ -4,9 +4,20 @@ class Rental < ApplicationRecord
 
   validates :start_date, presence: true
   validates :end_date, presence: true
+  validate :check_dates
   # validate :date_range_validation
 
-  # private
+  private
+
+  def check_dates
+    if start_date.present? && start_date < Date.today
+      errors.add(:start_date, "can't be in the past")
+    elsif end_date.present? && end_date < Date.today
+      errors.add(:end_date, "can't be in the past")
+    elsif end_date < start_date
+      errors.add(:end_date, "can't be before the start date")
+    end
+  end
 
   # def date_range_validation
   #   if start_date.present? && end_date.present? && ((end_date - start_date) < 2.days || (end_date - start_date) > 7.days)
