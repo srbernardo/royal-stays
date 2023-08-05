@@ -53,8 +53,8 @@
         <tr>
           <td><%= entry[:castle].name %></td>
           <td><%= entry[:rental].user.email %></td>
-          <td><%= entry[:start_date] %></td>
-          <td><%= entry[:end_date] %></td>
+          <td><%= entry[:start_date].strftime('%d/%m/%Y') %></td>
+          <td><%= entry[:end_date].strftime('%d/%m/%Y') %></td>
           <td><%= entry[:total_days] %></td>
           <td><%= number_to_currency(entry[:daily_rate]) %></td>
           <td><%= number_to_currency(entry[:total_rental]) %></td>
