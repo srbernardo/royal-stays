@@ -1,7 +1,7 @@
 <div class="container my-5">
 <div class="d-flex justify-content-between">
-  <h1 class= 'fs-3'>Our Castles (<%= @castles.count %>)</h1>
-  <h5 class="new-castle"><%= link_to 'new castle', new_castle_path(@castle) %></h5>
+  <h1 class="fs-3">Our Castles</h1>
+  <h5 class="m-0 p-0 d-flex align-items-center"><%= link_to "new castle", new_castle_path(@castle), class: "btn btn-primary" %></h5>
 </div>
   <hr>
   <div class="row justify-content-center" style="gap: 1.2rem" >
@@ -16,14 +16,14 @@
               <p><%= number_to_currency(castle.daily_rate) %>/night</p>
             </div>
             <div>
-              <%= link_to castle_path(castle), class:'text-primary', style:"text-decoration: none" do %>
+              <%= link_to castle_path(castle), class: "text-primary", style: "text-decoration: none" do %>
                 <i class="fa-solid fa-circle-info"></i>
               <% end %>
               <% if user_signed_in? && (current_user.id == castle.user_id) %>
-                <%= link_to edit_castle_path(castle), class:'text-warning', style:"text-decoration: none" do %>
+                <%= link_to edit_castle_path(castle), class: "text-warning", style: "text-decoration: none" do %>
                   <i class="fa-solid fa-pen"></i>
                 <% end %>
-                <%= link_to castle_path(castle), data:{ turbo_method: :delete, turbo_confirm: "Are you sure?" }, class:'text-danger' do %>
+                <%= link_to castle_path(castle), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "text-danger" do %>
                   <i class="fa-solid fa-trash-can"></i>
                 <% end %>
               <% end %>
