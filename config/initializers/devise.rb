@@ -1,3 +1,36 @@
+class TurboFailureApp < Devise::FailureApp
+  def respond
+    if request_format == :turbo_stream
+      redirect
+    else
+      super
+    end
+  end
+
+  def skip_format?
+    %w(html turbo_stream */*).include? request_format.to_s
+  end
+end
+
+class TurboController < ApplicationController
+  class Responder < ActionController::Responder
+    def to_turbo_stream
+      controller.render(options.merge(formats: :html))
+    rescue ActionView::MissingTemplate => error
+      if get?
+        raise error
+      elsif has_errors? && default_action
+        render rendering_options.merge(formats: :html, status: :unprocessable_entity)
+      else
+        redirect_to navigation_location
+      end
+    end
+  end
+
+  self.responder = Responder
+  respond_to :html, :turbo_stream
+end
+
 # frozen_string_literal: true
 
 # Assuming you have not yet modified this file, each configuration option below
@@ -14,11 +47,11 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '2871d797cbe51dc066c1421585519014d21b8d89aacac7ac1c7817ac64f75b710ca37d7441a08f5cb4f1a40204cc034d0c8dd68c311f721b836867a37134a542'
+  config.secret_key = Rails.application.credentials.secret_key_base
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
-  # config.parent_controller = 'DeviseController'
+  config.parent_controller = 'TuborController'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -277,10 +310,11 @@ Devise.setup do |config|
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
   #
-  # config.warden do |manager|
+  config.warden do |manager|
+    manager.failure_app = TurboFailureApp
   #   manager.intercept_401 = false
   #   manager.default_strategies(scope: :user).unshift :some_external_strategy
-  # end
+  end
 
   # ==> Mountable engine configurations
   # When using Devise inside an engine, let's call it `MyEngine`, and this engine
