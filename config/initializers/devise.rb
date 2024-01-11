@@ -12,7 +12,7 @@ class TurboFailureApp < Devise::FailureApp
   end
 end
 
-class TurboController < ActionController::Base
+class TurboController
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
