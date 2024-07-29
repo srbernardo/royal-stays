@@ -7,6 +7,5 @@ class User < ApplicationRecord
   has_many :castles
   has_one_attached :photo
 
-  validates :photo, presence: true
   validates :username, presence: true, uniqueness: true
 end
